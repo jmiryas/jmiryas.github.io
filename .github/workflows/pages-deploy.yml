@@ -1,4 +1,4 @@
-name: 'Automatic build'
+name: "Automatic build"
 on:
   push:
     branches:
@@ -10,19 +10,18 @@ on:
 
 jobs:
   continuous-delivery:
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # for posts's lastmod
+          fetch-depth: 0 # for posts's lastmod
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.1.2
           bundler-cache: true
 
       - name: Deploy
