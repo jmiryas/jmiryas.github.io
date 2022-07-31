@@ -23,10 +23,10 @@ timezone: Asia/Jakarta
 
 title: Rizky Ramadhan # the main title
 
-tagline: Rizky Ramadhan's personal website # it will display as the sub-title
+tagline: Websitenya Rizky Ramadhan # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Rizky Ramadhan's personal website.
+  Websitenya Rizky Ramadhan.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://jmiryas.github.io/"
