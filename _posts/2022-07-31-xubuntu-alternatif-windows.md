@@ -2,7 +2,7 @@
 title: Xubuntu Sebagai Alternatif Windows
 date: 2022-07-30 12:37:00
 categories: [Post, Linux]
-tags: [linux]
+tags: [linux, article]
 ---
 
 # Pendahuluan

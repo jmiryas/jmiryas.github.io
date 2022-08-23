@@ -25,7 +25,7 @@ Meski tidak banyak, Rizky Ramadhan berusaha untuk membaca paling tidak satu buku
     * Tsukuru Tazaki Tanpa Warna dan Tahun Ziarahnya
     * Kronik Burung Pegas
     * Dunia Kafka
-4. John Ernst Steinbeck
+4. John Ernest Steinbeck
     * Dataran Tortilla
 5. Keigo Higashino
     * Keajaiban Toko Kelontong Namiya
