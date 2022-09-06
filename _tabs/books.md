@@ -12,7 +12,7 @@ order: 5
 
 Meski tidak banyak, Rizky Ramadhan berusaha untuk membaca paling tidak satu buku dalam satu bulan. Berikut adalah berbagai macam buku yang pernah dibaca oleh Rizky Ramadhan, terdiri dari fiksi dan non fiksi.
 
-### Fiksi
+# Fiksi
 
 ---
 
@@ -40,7 +40,7 @@ Meski tidak banyak, Rizky Ramadhan berusaha untuk membaca paling tidak satu buku
 10. Voltaire
     * Candide
 
-### Non Fiksi
+# Non Fiksi
 
 ---
 
