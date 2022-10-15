@@ -1,6 +1,6 @@
 ---
 title: Aplikasi Anime Quotes
-date: 2022-09-05 13:54:00
+date: 2022-10-14 10:40:00
 categories: [Post, Flutter]
 tags: [flutter, article]
 ---
