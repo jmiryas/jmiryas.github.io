@@ -33,7 +33,7 @@ Berikut adalah API yang digunakan untuk aplikasi ini:
 
 Berikut adalah demo dari aplikasi ini:
 
-<img src="https://ibb.co/hdFx0Sf" alt="Demo" />
+![Demo](https://i.postimg.cc/SN6m812c/Peek-2022-10-15-10-25.gif)
 
 # Source Code
 
