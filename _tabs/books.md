@@ -17,38 +17,38 @@ Meski tidak banyak, Rizky Ramadhan berusaha untuk membaca paling tidak satu buku
 ---
 
 1. Albert Camus
-    * Orang Asing
+   - Orang Asing
 2. Franz Kafka
-    * Metamorfosa Samsa
+   - Metamorfosa Samsa
 3. Haruki Murakami
-    * Norwegian Wood
-    * Tsukuru Tazaki Tanpa Warna dan Tahun Ziarahnya
-    * Kronik Burung Pegas
-    * Dunia Kafka
+   - Norwegian Wood
+   - Tsukuru Tazaki Tanpa Warna dan Tahun Ziarahnya
+   - Kronik Burung Pegas
+   - Dunia Kafka
 4. John Ernest Steinbeck
-    * Dataran Tortilla
+   - Dataran Tortilla
 5. Keigo Higashino
-    * Keajaiban Toko Kelontong Namiya
+   - Keajaiban Toko Kelontong Namiya
 6. Leila S. Chudori
-    * Malam Terakhir
+   - Malam Terakhir
 7. Osamu Dazai
-    * Orang Gagal
+   - Gagal Menjadi Manusia
 8. Paulo Coelho
-    * Sang Alkemis
+   - Sang Alkemis
 9. Rikako Akiyoshi
-    * Absolute Justice
+   - Absolute Justice
 10. Voltaire
-    * Candide
+    - Candide
 
 # Non Fiksi
 
 ---
 
 1. David J. Schwartz
-    * Berpikir dan Berjiwa Besar
+   - Berpikir dan Berjiwa Besar
 2. Ichiro Kishimi dan Fumitake Koga
-    * Berani Tidak Disukai
+   - Berani Tidak Disukai
 3. Viktor Frankl
-    * Man's Search for Meaning
+   - Man's Search for Meaning
 4. Yuval Noah Harari
-    * Sapiens
+   - Sapiens
