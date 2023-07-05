@@ -7,4 +7,4 @@ tags: [info]
 
 # Welcome
 
-Selamat datang di website Rizky Ramadhan. Website ini dibuat dengan menggunakan Jekyll. Website ini akan mempublikasikan konten berupa tutorial pemrograman dan review novel atau film.
+Selamat datang di website Rizky Ramadhan. Website ini dibuat dengan menggunakan Jekyll.
