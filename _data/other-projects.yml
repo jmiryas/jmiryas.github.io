@@ -1,0 +1,24 @@
+- name: Parent Application
+  description: The Parent Application helps parents easily view their child's school or boarding school bills.
+  used:
+    - thing: JavaScript
+    - thing: React
+    - thing: React Router
+    - thing: Axios
+    - thing: Tailwind
+
+- name: Balance Transfer Application
+  description: This application allows students to check and transfer their account balance
+  used:
+    - thing: PHP
+    - thing: Yii 2
+    - thing: Bootstrap
+    - thing: jQuery
+
+- name: PPDB Application
+  description: The PPDB (New Student Enrollment) Application is designed to manage prospective students who wish to register at a school.
+  used:
+    - thing: PHP
+    - thing: Yii 2
+    - thing: Bootstrap
+    - thing: jQuery
