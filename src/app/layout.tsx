@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import {
+  Inter,
+  Playfair_Display,
+  JetBrains_Mono,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import "./globals.css";
 // Penting: Import CSS Highlight.js di sini agar codingan berwarna
 import "highlight.js/styles/atom-one-dark.css";
@@ -13,6 +18,12 @@ const inter = Inter({
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -35,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} ${jakarta.variable}`}
     >
       <body className="antialiased bg-bg text-text">{children}</body>
     </html>

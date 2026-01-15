@@ -1,6 +1,6 @@
 ---
 title: "Mengenal Hash Map: Rahasia Optimasi Kode Agar Lebih Cepat dan Efisien"
-date: "2025-01-15"
+date: "2025-01-14"
 readTime: "10 min read"
 excerpt: "Pernah merasa kodinganmu lambat saat mengolah data banyak? Jangan panik. Pelajari Hash Map Pattern, teknik 'rahasia' yang mengubah kode lambat jadi super ngebut. Kita bahas tuntas dari level pemula sampai level 'Dewa' dengan analogi yang gampang dimengerti!"
 # image: ""
