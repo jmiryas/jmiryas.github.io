@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+    /* --- 1. DEFINISI WARNA (EXTRA SOFT) --- */
+    --color-bg: #ffffff;
+
+    /* UPDATE WARNA: Lebih 'abu-abu' agar tidak menusuk mata */
+    --color-ink: #334155; /* Judul (Slate 700) - Abu Gelap Elegan */
+    --color-text: #475569; /* Body Text (Slate 600) - Abu Medium yang sangat nyaman */
+    --color-subtle: #94a3b8; /* Meta data (Slate 400) */
+
+    --color-paper: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-code-bg: #282c34;
+
+    /* --- 2. DEFINISI FONT --- */
+    --font-sans: var(--font-inter);
+    --font-serif: var(--font-playfair);
+    --font-mono: var(--font-jetbrains);
+}
+
+/* --- 3. BASE STYLES --- */
+@layer base {
+    body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-sans), sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+    }
+
+    /* Headings: Serif dengan Letter Spacing */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-serif), serif;
+        font-weight: 700;
+        color: var(--color-ink);
+
+        /* UPDATE: Tambah jarak antar huruf sedikit agar tidak mepet */
+        letter-spacing: 0.025em;
+    }
+
+    /* Khusus Heading Besar (h1), spacing bisa lebih rapat sedikit */
+    h1 {
+        letter-spacing: -0.01em;
+    }
+
+    code,
+    pre {
+        font-family: var(--font-mono), monospace;
+    }
+}
+
+/* --- 4. CUSTOM UTILITIES (Blog Style) --- */
+@utility prose-custom {
+    max-width: none;
+
+    h1 {
+        font-size: 2.5rem;
+        line-height: 1.15;
+        margin-bottom: 0.6em;
+        letter-spacing: -0.01em;
+        color: #1e293b;
+    }
+
+    /* UPDATE: Font Size Dikecilkan */
+    h2 {
+        font-size: 1.5rem; /* Sebelumnya 1.75rem */
+        margin-top: 2em;
+        margin-bottom: 0.75em;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        border-bottom: 1px dashed var(--color-border);
+        padding-bottom: 0.3em;
+        color: var(--color-ink);
+    }
+
+    h3 {
+        font-size: 1.15rem; /* Sedikit dikecilkan agar proporsional */
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: var(--color-ink);
+    }
+
+    /* UPDATE: Jarak Paragraf Diperdekat */
+    p {
+        margin-bottom: 1.25em; /* Sebelumnya 1.8em (terlalu jauh) */
+        color: var(--color-text);
+        line-height: 1.75;
+        text-align: justify;
+    }
+
+    /* Links */
+    a {
+        color: var(--color-ink);
+        text-decoration: underline;
+        text-decoration-color: #cbd5e1; /* Garis bawah lebih soft */
+        text-underline-offset: 4px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+    a:hover {
+        color: #2563eb;
+        text-decoration-color: #2563eb;
+    }
+
+    /* Lists */
+    ul,
+    ol {
+        margin-bottom: 1.25em;
+        padding-left: 1.5em;
+    }
+    li {
+        margin-bottom: 0.4em;
+    }
+
+    /* Quote */
+    blockquote {
+        border-left: 4px solid var(--color-border);
+        padding-left: 1.25em;
+        font-style: italic;
+        color: var(--color-subtle);
+        margin-bottom: 1.5em;
+        font-family: var(--font-serif); /* Quote pakai Serif */
+    }
+}
