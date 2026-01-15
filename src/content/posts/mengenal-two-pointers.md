@@ -112,6 +112,47 @@ Jika `j` menemukan angka yang **sama** dengan `i`, dia lewat saja. Tapi jika `j`
 1. `i` maju satu langkah.
 2. Catat angka baru tersebut di posisi `i`.
 
+### Simulasi Gerakan
+
+Array Awal: `[1, 1, 2, 3, 3, 4]`
+Posisi Awal: `i` di index 0 (nilai 1), `j` di index 1 (nilai 1).
+
+1.  **Cek 1:** `arr[i]` (1) vs `arr[j]` (1).
+
+    - **Sama.** `j` lanjut jalan.
+
+2.  **Cek 2:** `j` geser ke nilai 2.
+
+    - Bandingkan `arr[i]` (1) vs `arr[j]` (2).
+    - **Beda!**
+    - `i` maju satu langkah.
+    - Ubah nilai di posisi `i` menjadi 2.
+    - Array sekarang: `[1, 2, 2, 3, 3, 4]` (Perhatikan posisi index 1 berubah).
+
+3.  **Cek 3:** `j` geser ke nilai 3.
+
+    - Bandingkan `arr[i]` (2) vs `arr[j]` (3).
+    - **Beda!**
+    - `i` maju satu langkah.
+    - Ubah nilai di posisi `i` menjadi 3.
+    - Array sekarang: `[1, 2, 3, 3, 3, 4]`.
+
+4.  **Cek 4:** `j` geser ke nilai 3 berikutnya.
+
+    - Bandingkan `arr[i]` (3) vs `arr[j]` (3).
+    - **Sama.** `j` lanjut jalan.
+
+5.  **Cek 5:** `j` geser ke nilai 4.
+    - Bandingkan `arr[i]` (3) vs `arr[j]` (4).
+    - **Beda!**
+    - `i` maju satu langkah.
+    - Ubah nilai di posisi `i` menjadi 4.
+    - Array sekarang: `[1, 2, 3, 4, 3, 4]`.
+
+**Hasil Akhir:**
+Loop selesai. Posisi `i` berakhir di index **3**.
+Maka jumlah angka uniknya adalah `i + 1` = **4**.
+
 ### Kode JavaScript
 
 ```javascript:countUniqueValues.js
@@ -196,6 +237,43 @@ Kamu punya deretan dinding. Pilih dua dinding untuk jadi tepi kolam renang agar 
 
 Kita mulai dari kolam terlebar (ujung ke ujung). Untuk mencoba mendapatkan luas lebih besar, kita harus **membuang dinding yang pendek** dan berharap menemukan dinding yang lebih tinggi di bagian dalam.
 
+### Simulasi Gerakan
+
+Input: `[1, 8, 6, 2, 5, 4, 8, 3, 7]`
+
+1.  **Posisi Awal (Lebar Maksimal):**
+
+    - **Kiri:** Index 0 (Tinggi **1**) | **Kanan:** Index 8 (Tinggi **7**)
+    - **Lebar:** 8 - 0 = `8`
+    - **Tinggi Air:** Ambil yang terpendek = `1`
+    - **Luas:** 8 x 1 = **8**
+    - _Keputusan:_ Dinding kiri (1) kependekan, buang! Geser **Left Maju**.
+
+2.  **Langkah 2 (Rekor Baru!):**
+
+    - **Kiri:** Index 1 (Tinggi **8**) | **Kanan:** Index 8 (Tinggi **7**)
+    - **Lebar:** 8 - 1 = `7`
+    - **Tinggi Air:** Ambil yang terpendek = `7`
+    - **Luas:** 7 x 7 = **49** (Rekor Tertinggi!)
+    - _Keputusan:_ Dinding kanan (7) lebih pendek dari kiri (8). Geser **Right Mundur**.
+
+3.  **Langkah 3:**
+
+    - **Kiri:** Index 1 (Tinggi **8**) | **Kanan:** Index 7 (Tinggi **3**)
+    - **Lebar:** 7 - 1 = `6`
+    - **Tinggi Air:** Ambil yang terpendek = `3`
+    - **Luas:** 6 x 3 = **18** (Masih kalah dari 49)
+    - _Keputusan:_ Dinding kanan (3) kependekan. Geser **Right Mundur**.
+
+4.  **Langkah 4:**
+    - **Kiri:** Index 1 (Tinggi **8**) | **Kanan:** Index 6 (Tinggi **8**)
+    - **Lebar:** 6 - 1 = `5`
+    - **Tinggi Air:** `8`
+    - **Luas:** 5 x 8 = **40** (Hampir, tapi belum mengalahkan 49)
+    - _Keputusan:_ Tinggi sama. Geser salah satu (misal **Right Mundur**).
+
+_(Proses berlanjut sampai pointer bertemu, tapi rekor 49 tidak terkalahkan)._
+
 ### Kode JavaScript
 
 ```javascript:maxArea.js
@@ -244,6 +322,46 @@ Jika **leftMax** lebih kecil dari **rightMax**, kita yakin air di sisi kiri past
 
 Maka kita hitung air di sisi kiri:
 `leftMax - tinggiTanahSaatIni`
+
+### Simulasi Gerakan
+
+Input: `[0,1,0,2,1,0,1,3,2,1,2,1]`
+
+1.  **Mulai (Inisialisasi):**
+
+    - `Left` di index 0 (Tinggi 0), `Right` di index 11 (Tinggi 1).
+    - `LeftMax` = 0, `RightMax` = 0.
+
+2.  **Gerakan Awal (Mencari Tembok):**
+
+    - `Left` (0) lebih kecil dari `Right` (1).
+    - Update `LeftMax` jadi **0**. Geser `Left` maju.
+    - Sekarang `Left` di index 1 (Tinggi 1). Update `LeftMax` jadi **1**.
+
+3.  **Momen Terjebak Air (Sisi Kiri):**
+
+    - `Left` maju ke index 2 (Tinggi **0**).
+    - Bandingkan: `LeftMax` (1) vs Tanah (0).
+    - Karena tanah lebih rendah dari `LeftMax`, dan kita tahu di ujung kanan sana ada tembok tinggi (Right), maka air terjebak!
+    - **Air:** 1 - 0 = **1 kotak**.
+
+4.  **Pindah Fokus ke Kanan:**
+
+    - Setelah beberapa langkah, `Left` bertemu tembok tinggi (2). `LeftMax` jadi **2**.
+    - Sekarang `Right` (1) lebih kecil dari `Left` (2). Kita urus sisi kanan.
+    - `RightMax` update jadi **1**. Geser `Right` mundur.
+
+5.  **Momen Terjebak Air (Sisi Kanan):**
+
+    - `Right` mundur ke index 9 (Tinggi **1**).
+    - Sebelumnya `RightMax` sudah tercatat **2** (dari index 10).
+    - Karena tanah (1) lebih rendah dari `RightMax` (2), dan di kiri ada tembok tinggi (Left=2), air terjebak!
+    - **Air:** 2 - 1 = **1 kotak**.
+
+6.  **Bertemu di Tengah (Tembok Raksasa):**
+    - Proses berlanjut, pointer `Left` dan `Right` akan terus mendekat dan "memanen" air di setiap cekungan.
+    - Mereka akhirnya bertemu di angka **3** (tembok tertinggi).
+    - **Total Air:** 1 + 1 + 2 + 1 + 1 = **6**.
 
 ### Kode JavaScript
 
@@ -347,6 +465,38 @@ Kamu masuk ke lorong supermarket yang panjang.
 - **Input:** `kataSandi = "abc"`, `teks = "acb"`
 - **Output:** `false`
 - **Penjelasan:** Di teks, huruf 'c' muncul duluan sebelum 'b'. Padahal di kata sandi, kita butuh 'b' dulu baru 'c'. Ingat, kita **tidak boleh mundur!**
+
+### Simulasi Gerakan
+
+Mari kita bedah contoh **"sing"** di dalam **"stingray"**.
+
+- **Pointer `i` (Detektif):** Fokus mencari huruf di "sing".
+- **Pointer `j` (Penjelajah):** Menyusuri setiap huruf di "stingray".
+
+1.  **Cek 1:** `j` menunjuk huruf **'s'**.
+
+    - Target `i` adalah **'s'**.
+    - **COCOK!** Detektif (`i`) maju. Sekarang misinya mencari huruf **'i'**.
+
+2.  **Cek 2:** `j` maju ke huruf **'t'**.
+
+    - Target `i` adalah **'i'**.
+    - **Beda.** Abaikan. Penjelajah (`j`) jalan terus.
+
+3.  **Cek 3:** `j` maju ke huruf **'i'**.
+
+    - Target `i` adalah **'i'**.
+    - **COCOK!** Detektif (`i`) maju. Sekarang misinya mencari huruf **'n'**.
+
+4.  **Cek 4:** `j` maju ke huruf **'n'**.
+
+    - Target `i` adalah **'n'**.
+    - **COCOK!** Detektif (`i`) maju. Sekarang misinya mencari huruf **'g'**.
+
+5.  **Cek 5:** `j` maju ke huruf **'g'**.
+    - Target `i` adalah **'g'**.
+    - **COCOK!** Detektif (`i`) maju.
+    - Karena huruf di "sing" sudah habis, misi selesai. **Hasil: TRUE.**
 
 ---
 
