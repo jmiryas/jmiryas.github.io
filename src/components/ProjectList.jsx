@@ -50,11 +50,21 @@ export default function ProjectList() {
                 {String(index + 1).padStart(2, "0")}.
               </div>
 
-              {/* Kolom Konten (Judul, Desc, Tech Stack) */}
+              {/* Kolom Konten (Judul, Company, Desc, Tech Stack) */}
               <div style={{ flex: 1 }}>
+                {/* --- BAGIAN INI YANG DIUPDATE --- */}
                 <div className="item-header">
                   <h3 style={{ margin: 0 }}>{proj.title}</h3>
+                  {/* Tambahan: Nama Company di ujung kanan */}
+                  <span
+                    className="item-meta"
+                    style={{ textAlign: "right", marginLeft: "1rem" }}
+                  >
+                    {proj.company}
+                  </span>
                 </div>
+                {/* ------------------------------- */}
+
                 <p
                   style={{
                     marginBottom: 0,
