@@ -29,7 +29,7 @@ export default function Sidebar() {
           className="link-item"
           target="_blank"
         >
-          <Linkedin size={16} /> <span>/in/rizkyramadhan</span>
+          <Linkedin size={16} /> <span>/in/rizky-ramadhan28</span>
         </a>
         <a
           href="https://github.com/jmiryas"
