@@ -12,39 +12,37 @@ export default function ExperienceList() {
       <div className="exp-list">
         {displayedExp.map((exp, index) => (
           <div key={exp.id} className="list-item">
-            <div className="item-header">
-              {/* Menambahkan flex dan baseline agar angka dan teks sejajar rapi di bawah */}
-              <h3
+            {/* Menggunakan Flexbox untuk memisahkan kolom Angka dan kolom Teks */}
+            <div
+              style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}
+            >
+              {/* Kolom Angka */}
+              <div
                 style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "0.75rem",
-                  margin: 0,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.85rem",
+                  color: "var(--text-light)",
+                  paddingTop: "0.1rem", // Penyesuaian tinggi agar sejajar dengan teks H3
                 }}
               >
-                {/* Styling khusus untuk angka indeks */}
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.85rem",
-                    color: "var(--text-light)", // Menggunakan abu-abu terang agar sangat subtle
-                    fontWeight: "400",
-                  }}
-                >
-                  {String(index + 1).padStart(2, "0")}.
-                </span>
-                {exp.role}
-              </h3>
-              <span className="item-meta">{exp.period}</span>
-            </div>
-            <div className="tech-stack" style={{ marginLeft: "2rem" }}>
-              {" "}
-              {/* Memberikan indentasi agar sejajar dengan teks h3 */}
-              {exp.company}
+                {String(index + 1).padStart(2, "0")}.
+              </div>
+
+              {/* Kolom Konten (Akan otomatis sejajar sempurna rata kiri) */}
+              <div style={{ flex: 1 }}>
+                <div className="item-header">
+                  <h3 style={{ margin: 0 }}>{exp.role}</h3>
+                  <span className="item-meta">{exp.period}</span>
+                </div>
+                <div className="tech-stack" style={{ marginTop: "0.2rem" }}>
+                  {exp.company}
+                </div>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
       {experiences.length > 3 && (
         <button className="btn-text" onClick={() => setShowAll(!showAll)}>
           {showAll ? "- Show less" : "+ Show all experiences"}

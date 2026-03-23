@@ -8,17 +8,13 @@ export default function ProjectList() {
   const [showAll, setShowAll] = useState(false);
   const [activeProj, setActiveProj] = useState(null);
 
-  // Mencegah body agar tidak bisa di-scroll saat drawer sedang terbuka
   useEffect(() => {
     document.body.style.overflow = activeProj ? "hidden" : "auto";
-
-    // Cleanup function untuk mengembalikan scroll saat komponen unmount
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [activeProj]);
 
-  // Menentukan berapa project yang tampil berdasarkan state showAll
   const displayedProj = showAll ? projects : projects.slice(0, 3);
 
   return (
@@ -32,38 +28,37 @@ export default function ProjectList() {
             className="list-item project-item"
             onClick={() => setActiveProj(proj)}
           >
-            <div style={{ width: "100%", paddingRight: "1rem" }}>
-              <div className="item-header">
-                {/* Menambahkan flex dan baseline agar angka dan teks sejajar rapi */}
-                <h3
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    gap: "0.75rem",
-                    margin: 0,
-                  }}
-                >
-                  {/* Styling khusus untuk angka indeks: Muted, Monospace, Normal weight */}
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.85rem",
-                      color: "var(--text-light)",
-                      fontWeight: "400",
-                    }}
-                  >
-                    {String(index + 1).padStart(2, "0")}.
-                  </span>
-                  {proj.title}
-                </h3>
+            {/* Flexbox Wrapper untuk List Project */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "1rem",
+                width: "100%",
+                paddingRight: "1rem",
+              }}
+            >
+              {/* Kolom Angka */}
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.85rem",
+                  color: "var(--text-light)",
+                  paddingTop: "0.1rem",
+                }}
+              >
+                {String(index + 1).padStart(2, "0")}.
               </div>
 
-              {/* Indentasi agar teks deskripsi sejajar rata kiri dengan huruf pertama judul, bukan angka */}
-              <div style={{ marginLeft: "2.1rem" }}>
+              {/* Kolom Konten (Judul, Desc, Tech Stack) */}
+              <div style={{ flex: 1 }}>
+                <div className="item-header">
+                  <h3 style={{ margin: 0 }}>{proj.title}</h3>
+                </div>
                 <p
                   style={{
                     marginBottom: 0,
-                    marginTop: "0.2rem",
+                    marginTop: "0.3rem",
                     fontSize: "0.9rem",
                   }}
                 >
@@ -78,7 +73,6 @@ export default function ProjectList() {
         ))}
       </div>
 
-      {/* Tombol Show All (Hanya muncul jika total project > 3) */}
       {projects.length > 3 && (
         <button className="btn-text" onClick={() => setShowAll(!showAll)}>
           {showAll ? "- Show less" : "+ Show all projects"}
