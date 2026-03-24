@@ -1,5 +1,5 @@
 ---
-title: "Part 5: Manajemen RBAC untuk Admin"
+title: "Aplikasi Perpus CI 3 - Part 5: Manajemen RBAC untuk Admin"
 date: "Mar 25, 2026"
 description: "Manajemen RBAC"
 ---

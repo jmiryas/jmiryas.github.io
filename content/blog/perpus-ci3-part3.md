@@ -1,5 +1,5 @@
 ---
-title: "Part 3: Sistem RBAC (Role-Based Access Control) Backend"
+title: "Aplikasi Perpus CI 3 - Part 3: Sistem RBAC (Role-Based Access Control) Backend"
 date: "Mar 25, 2026"
 description: "RBAC"
 ---

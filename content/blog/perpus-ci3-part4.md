@@ -1,5 +1,5 @@
 ---
-title: "Part 4: UI Dinamis dengan Bootstrap 5"
+title: "Aplikasi Perpus CI 3 - Part 4: UI Dinamis dengan Bootstrap 5"
 date: "Mar 25, 2026"
 description: "UI dinamis"
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Part 2: Universal Filter, Multiple Sort, dan Pagination"
+title: "Aplikasi Perpus CI 3 - Part 2: Universal Filter, Multiple Sort, dan Pagination"
 date: "Mar 25, 2026"
 description: "Filter, sort dan pagination"
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Part 1: Setup Awal, Perancangan Database, dan Sistem Otentikasi"
+title: "Aplikasi Perpus CI 3 - Part 1: Setup Awal, Perancangan Database, dan Sistem Otentikasi"
 date: "Mar 25, 2026"
 description: "Setup projek CI 3 dan database"
 ---
