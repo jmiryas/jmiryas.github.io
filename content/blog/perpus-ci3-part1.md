@@ -131,21 +131,7 @@ Sebelum menulis SQL, pahami dulu konsepnya:
 
 ### Entity Relationship Diagram (Konseptual)
 
-```
-branches (1) ----< (N) users (N) >---- (N) roles
-                      |
-                      N
-                      |
-                user_roles (junction)
-                      |
-                      N
-                      |
-                roles (1) ----< (N) role_permissions (N) >---- (1) permissions
-                      |
-                      1
-                      |
-                branches ----< books
-```
+![ERD Database Aplikasi Perpus](/images/perpus-ci3-erd.png)
 
 ### SQL Schema Lengkap
 
