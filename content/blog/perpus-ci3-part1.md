@@ -143,7 +143,7 @@ CREATE DATABASE IF NOT EXISTS perpustakaan_db CHARACTER SET utf8mb4 COLLATE utf8
 USE perpustakaan_db;
 
 -- Tabel Cabang
-CREATE TABLE branches (
+CREATE TABLE IF NOT EXISTS branches (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     address TEXT,
@@ -157,7 +157,7 @@ CREATE TABLE branches (
 ) ENGINE=InnoDB;
 
 -- Tabel Role
-CREATE TABLE roles (
+CREATE TABLE IF NOT EXISTS roles (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255),
@@ -168,7 +168,7 @@ CREATE TABLE roles (
 ) ENGINE=InnoDB;
 
 -- Tabel Permission
-CREATE TABLE permissions (
+CREATE TABLE IF NOT EXISTS permissions (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE,
     description VARCHAR(255),
@@ -178,7 +178,7 @@ CREATE TABLE permissions (
 ) ENGINE=InnoDB;
 
 -- Tabel Role-Permission (Many-to-Many)
-CREATE TABLE role_permissions (
+CREATE TABLE IF NOT EXISTS role_permissions (
     role_id INT UNSIGNED NOT NULL,
     permission_id INT UNSIGNED NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -188,7 +188,7 @@ CREATE TABLE role_permissions (
 ) ENGINE=InnoDB;
 
 -- Tabel User
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     branch_id INT UNSIGNED NOT NULL,
     role_id INT UNSIGNED NOT NULL,
@@ -211,7 +211,7 @@ CREATE TABLE users (
 ) ENGINE=InnoDB;
 
 -- Tabel Buku
-CREATE TABLE books (
+CREATE TABLE IF NOT EXISTS books (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     branch_id INT UNSIGNED NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -234,69 +234,79 @@ CREATE TABLE books (
     INDEX idx_is_active (is_active)
 ) ENGINE=InnoDB;
 
+-- ==========================================
 -- Data Awal (Seeder)
+-- Menggunakan INSERT IGNORE agar tidak error jika dijalankan ulang
+-- ==========================================
 
 -- Insert Cabang Default
-INSERT INTO branches (name, address, phone, email) VALUES
-('Cabang Pusat', 'Jl. Sudirman No. 1, Jakarta', '021-1234567', 'pusat@perpustakaan.com'),
-('Cabang Bandung', 'Jl. Dago No. 10, Bandung', '022-7654321', 'bandung@perpustakaan.com'),
-('Cabang Surabaya', 'Jl. Tunjungan No. 5, Surabaya', '031-9876543', 'surabaya@perpustakaan.com');
+INSERT IGNORE INTO branches (id, name, address, phone, email) VALUES
+(1, 'Cabang Pusat', 'Jl. Sudirman No. 1, Jakarta', '021-1234567', 'pusat@perpustakaan.com'),
+(2, 'Cabang Bandung', 'Jl. Dago No. 10, Bandung', '022-7654321', 'bandung@perpustakaan.com'),
+(3, 'Cabang Surabaya', 'Jl. Tunjungan No. 5, Surabaya', '031-9876543', 'surabaya@perpustakaan.com');
 
 -- Insert Roles
-INSERT INTO roles (name, description) VALUES
-('Superadmin', 'Akses penuh ke seluruh sistem dan semua cabang'),
-('Admin Cabang', 'Mengelola data di cabangnya sendiri'),
-('Petugas', 'Input dan edit data di cabangnya sendiri'),
-('Peminjam', 'Hanya melihat katalog dan pinjam buku');
+INSERT IGNORE INTO roles (id, name, description) VALUES
+(1, 'Superadmin', 'Akses penuh ke seluruh sistem dan semua cabang'),
+(2, 'Admin Cabang', 'Mengelola data di cabangnya sendiri'),
+(3, 'Petugas', 'Input dan edit data di cabangnya sendiri'),
+(4, 'Peminjam', 'Hanya melihat katalog dan pinjam buku');
 
 -- Insert Permissions
-INSERT INTO permissions (name, description, module) VALUES
+INSERT IGNORE INTO permissions (id, name, description, module) VALUES
 -- User Management
-('user_view', 'Melihat daftar user', 'user'),
-('user_create', 'Membuat user baru', 'user'),
-('user_edit', 'Mengedit user', 'user'),
-('user_delete', 'Menghapus user', 'user'),
+(1, 'user_view', 'Melihat daftar user', 'user'),
+(2, 'user_create', 'Membuat user baru', 'user'),
+(3, 'user_edit', 'Mengedit user', 'user'),
+(4, 'user_delete', 'Menghapus user', 'user'),
 -- Role Management
-('role_view', 'Melihat daftar role', 'role'),
-('role_create', 'Membuat role baru', 'role'),
-('role_edit', 'Mengedit role', 'role'),
-('role_delete', 'Menghapus role', 'role'),
-('role_assign_permission', 'Mengatur permission role', 'role'),
+(5, 'role_view', 'Melihat daftar role', 'role'),
+(6, 'role_create', 'Membuat role baru', 'role'),
+(7, 'role_edit', 'Mengedit role', 'role'),
+(8, 'role_delete', 'Menghapus role', 'role'),
+(9, 'role_assign_permission', 'Mengatur permission role', 'role'),
 -- Branch Management
-('branch_view', 'Melihat daftar cabang', 'branch'),
-('branch_create', 'Membuat cabang baru', 'branch'),
-('branch_edit', 'Mengedit cabang', 'branch'),
-('branch_delete', 'Menghapus cabang', 'branch'),
+(10, 'branch_view', 'Melihat daftar cabang', 'branch'),
+(11, 'branch_create', 'Membuat cabang baru', 'branch'),
+(12, 'branch_edit', 'Mengedit cabang', 'branch'),
+(13, 'branch_delete', 'Menghapus cabang', 'branch'),
 -- Book Management
-('book_view', 'Melihat daftar buku', 'book'),
-('book_create', 'Membuat buku baru', 'book'),
-('book_edit', 'Mengedit buku', 'book'),
-('book_delete', 'Menghapus buku', 'book'),
-('book_view_all_branch', 'Melihat buku semua cabang', 'book');
+(14, 'book_view', 'Melihat daftar buku', 'book'),
+(15, 'book_create', 'Membuat buku baru', 'book'),
+(16, 'book_edit', 'Mengedit buku', 'book'),
+(17, 'book_delete', 'Menghapus buku', 'book'),
+(18, 'book_view_all_branch', 'Melihat buku semua cabang', 'book');
 
 -- Assign Permissions ke Roles
 -- Superadmin: semua permission
-INSERT INTO role_permissions (role_id, permission_id)
+INSERT IGNORE INTO role_permissions (role_id, permission_id)
 SELECT 1, id FROM permissions;
 
 -- Admin Cabang: semua kecuali manage role dan manage branch
-INSERT INTO role_permissions (role_id, permission_id) VALUES
+INSERT IGNORE INTO role_permissions (role_id, permission_id) VALUES
 (2, 1), (2, 2), (2, 3), (2, 4),  -- user
-(2, 13), (2, 14), (2, 15), (2, 16), -- book
-(2, 17); -- book_view_all_branch (tapi akan difilter di kode)
+(2, 14), (2, 15), (2, 16), (2, 17), -- book (ID bergeser karena ada tambahan branch permission di atas)
+(2, 18); -- book_view_all_branch
 
 -- Petugas: hanya book CRUD di cabang sendiri
-INSERT INTO role_permissions (role_id, permission_id) VALUES
-(3, 13), (3, 14), (3, 15), (3, 16);
+INSERT IGNORE INTO role_permissions (role_id, permission_id) VALUES
+(3, 14), (3, 15), (3, 16), (3, 17);
 
 -- Peminjam: hanya view book
-INSERT INTO role_permissions (role_id, permission_id) VALUES
-(4, 13);
+INSERT IGNORE INTO role_permissions (role_id, permission_id) VALUES
+(4, 14);
 
 -- Insert User Superadmin Default (password: admin123)
-INSERT INTO users (branch_id, role_id, username, email, password_hash, full_name, is_active)
-VALUES (1, 1, 'superadmin', 'admin@perpustakaan.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Pusat', 1);
--- Password di atas adalah hash dari "admin123" menggunakan password_hash() PHP
+INSERT IGNORE INTO users (id, branch_id, role_id, username, email, password_hash, full_name, is_active)
+VALUES (1, 1, 1, 'superadmin', 'admin@perpustakaan.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Pusat', 1);
+
+-- Insert Data Buku Real
+INSERT IGNORE INTO books (branch_id, title, author, isbn, publisher, publication_year, category, description, stock, created_by) VALUES
+(1, 'Laskar Pelangi', 'Andrea Hirata', '9789793062792', 'Bentang Pustaka', 2005, 'Fiksi', 'Kisah inspiratif tentang perjuangan 10 anak di Belitung untuk mendapatkan pendidikan di tengah keterbatasan.', 15, 1),
+(1, 'Bumi Manusia', 'Pramoedya Ananta Toer', '9789799731234', 'Hasta Mitra', 1980, 'Fiksi Sejarah', 'Novel sejarah yang menceritakan kisah Minke, seorang pribumi di era kolonial Hindia Belanda yang memperjuangkan keadilan.', 10, 1),
+(2, 'Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa', 'James Clear', '9786020633176', 'Gramedia Pustaka Utama', 2018, 'Self-Improvement', 'Panduan praktis untuk membentuk kebiasaan baik, menghilangkan kebiasaan buruk, dan menguasai perilaku kecil yang menghasilkan perubahan besar.', 25, 1),
+(2, 'Sapiens: Riwayat Singkat Umat Manusia', 'Yuval Noah Harari', '9786024810582', 'Kepustakaan Populer Gramedia', 2011, 'Sejarah', 'Eksplorasi mendalam tentang sejarah umat manusia dari zaman batu hingga abad ke-21.', 12, 1),
+(3, 'Clean Code: A Handbook of Agile Software Craftsmanship', 'Robert C. Martin', '9780132350884', 'Prentice Hall', 2008, 'Teknologi', 'Panduan klasik bagi software engineer untuk menulis kode yang bersih, mudah dibaca, dan mudah dikelola.', 8, 1);
 ```
 
 **Catatan Penting:** Password hash di atas adalah contoh. Nanti kita akan generate hash yang valid menggunakan PHP.
