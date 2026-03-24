@@ -296,9 +296,9 @@ INSERT IGNORE INTO role_permissions (role_id, permission_id) VALUES
 INSERT IGNORE INTO role_permissions (role_id, permission_id) VALUES
 (4, 14);
 
--- Insert User Superadmin Default (password: admin123)
+-- Insert User Superadmin Default (password: 123456)
 INSERT IGNORE INTO users (id, branch_id, role_id, username, email, password_hash, full_name, is_active)
-VALUES (1, 1, 1, 'superadmin', 'admin@perpustakaan.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator Pusat', 1);
+VALUES (1, 1, 1, 'superadmin', 'admin@perpustakaan.com', '$2y$10$3GQg3y1ZuR.NmJ3hTCysl.VYJCLe2vJ9HXzPF56iUIThUv/WlT5T6', 'Administrator Pusat', 1);
 
 -- Insert Data Buku Real
 INSERT IGNORE INTO books (branch_id, title, author, isbn, publisher, publication_year, category, description, stock, created_by) VALUES
@@ -754,16 +754,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-    private $auth_service;
-    private $auth_validation;
-
-    public function __construct() {
-        parent::__construct();
-        $this->load->service('auth_service');
-        $this->load->library('auth_validation');
-        $this->auth_service = new Auth_service();
-        $this->auth_validation = new Auth_validation();
-    }
+    public function __construct()
+	{
+		parent::__construct();
+		$this->load->service('auth_service');
+		$this->load->validation('auth_validation');
+	}
 
     /**
      * Halaman Login
@@ -1150,6 +1146,42 @@ class MY_Loader extends CI_Loader {
 
         return $this;
     }
+
+    /**
+	 * Load validation
+	 */
+	public function validation($validation_name, $params = NULL, $object_name = NULL)
+	{
+		$validation_name = ucfirst($validation_name);
+		$class_name = $validation_name;
+
+		// Path mengarah ke folder validations
+		$validation_path = APPPATH . 'validations/' . $class_name . '.php';
+
+		if (!file_exists($validation_path)) {
+			show_error('Validation file tidak ditemukan: ' . $class_name);
+		}
+
+		require_once($validation_path);
+
+		if (!class_exists($class_name)) {
+			show_error('Class validation tidak valid: ' . $class_name);
+		}
+
+		// Instantiate
+		$validation = ($params !== NULL) ? new $class_name($params) : new $class_name();
+
+		// Assign to CI object
+		if ($object_name === NULL) {
+			$object_name = strtolower($validation_name);
+		}
+
+		$this->_ci_classes[$object_name] = $validation_name;
+		$CI = &get_instance();
+		$CI->$object_name = $validation;
+
+		return $this;
+	}
 }
 ```
 
