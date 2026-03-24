@@ -24,10 +24,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${lora.variable} ${firaCode.variable}`}
     >
       <body>
-        <div className="container">
-          <Sidebar />
-          <main>{children}</main>
-        </div>
+        {children}
         <ScrollControls />
       </body>
     </html>

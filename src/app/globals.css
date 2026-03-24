@@ -473,6 +473,37 @@ section {
   font-size: 0.85rem;
   line-height: 1.7;
   max-width: 100%;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border-radius: 4px;
+  padding: 0.4rem;
+  cursor: pointer;
+  opacity: 0; /* Sembunyikan secara default */
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Tampilkan tombol saat blok pre di-hover */
+.markdown-body pre:hover .copy-btn {
+  opacity: 1;
+}
+
+/* Efek saat tombol copy di-hover */
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Reset inner code tag */
@@ -611,6 +642,12 @@ section {
   color: var(--accent);
   border-color: var(--border-dark);
   transform: translateY(-2px);
+}
+
+.reading-container {
+  max-width: 960px; /* Lebar optimal (Golden Ratio) untuk artikel */
+  margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
 /* =========================================

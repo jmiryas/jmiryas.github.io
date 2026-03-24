@@ -8,6 +8,8 @@ import remarkRehype from "remark-rehype";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 
+import CopyCodeInit from "@/components/CopyCodeInit";
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({ slug: post.slug }));
@@ -38,7 +40,7 @@ export default async function BlogPost({ params }) {
   const htmlContent = String(file);
 
   return (
-    <>
+    <div className="reading-container">
       {/* Tombol Back sekarang mengarah langsung ke Beranda Utama (/) */}
       <Link href="/" className="nav-back hover-link">
         <ArrowLeft size={16} /> Back
@@ -58,6 +60,8 @@ export default async function BlogPost({ params }) {
         className="markdown-body"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
-    </>
+
+      <CopyCodeInit />
+    </div>
   );
 }
