@@ -4,14 +4,10 @@ date: "Mar 26, 2026"
 description: "Seri Tutorial Flutter Part 1: Rahasia Performa UI dan Render Object"
 ---
 
----
-
 > **Seri Tutorial:** Flutter Fundamental Desain & UI Tingkat Lanjut
 > **Studi Kasus:** Dashboard Aplikasi Mini Point-of-Sale (POS)
 > **Versi Flutter:** 3.41.5
 > **Level:** Intermediate (cocok juga untuk pemula yang serius)
-
----
 
 Selamat datang di part pertama dari seri tiga bagian ini. Di sini, aku tidak akan langsung melempar kode ke kamu dan menyuruh kamu menjalankannya. Kita akan mulai dari fondasi yang sesungguhnya: **memahami apa yang sebenarnya terjadi di balik layar ketika Flutter menggambar sebuah widget.**
 

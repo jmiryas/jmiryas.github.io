@@ -413,18 +413,20 @@ section {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-weight: 600;
-  margin: 2rem 0 0.8rem 0; /* Lebih compact */
+  margin: 2rem 0 0.8rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
   color: var(--text-main);
+  scroll-margin-top: 2rem; /* Tambahkan ini agar saat dilompat, tidak mentok atas */
 }
 
 .markdown-body h3 {
   font-family: var(--font-sans);
   font-size: 1.15rem;
   font-weight: 600;
-  margin: 1.5rem 0 0.6rem 0; /* Lebih compact */
+  margin: 1.5rem 0 0.6rem 0;
   color: var(--text-main);
+  scroll-margin-top: 2rem; /* Tambahkan ini juga */
 }
 
 .markdown-body ul,
@@ -673,4 +675,13 @@ section {
     bottom: 1.5rem;
     right: 1.5rem;
   }
+}
+
+::selection {
+  background-color: rgba(79, 70, 229, 0.2); /* Biru transparan */
+  color: inherit;
+}
+::-moz-selection {
+  background-color: rgba(79, 70, 229, 0.2);
+  color: inherit;
 }

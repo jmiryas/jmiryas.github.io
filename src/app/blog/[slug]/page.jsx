@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
+
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
+
+// 1. TAMBAHKAN IMPORT INI
+import rehypeSlug from "rehype-slug";
 
 import CopyCodeInit from "@/components/CopyCodeInit";
 
@@ -25,11 +29,12 @@ export default async function BlogPost({ params }) {
     return <div>Post not found</div>;
   }
 
-  // Proses markdown dan aktifkan line numbers via rehype-pretty-code
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype)
+    // 2. TAMBAHKAN REHYPE-SLUG DI SINI (Pastikan sebelum rehypeStringify)
+    .use(rehypeSlug)
     .use(rehypePrettyCode, {
       theme: "one-dark-pro",
       keepBackground: false,
@@ -41,9 +46,8 @@ export default async function BlogPost({ params }) {
 
   return (
     <div className="reading-container">
-      {/* Tombol Back sekarang mengarah langsung ke Beranda Utama (/) */}
-      <Link href="/" className="nav-back hover-link">
-        <ArrowLeft size={16} /> Back
+      <Link href="/blog" className="nav-back hover-link">
+        <ArrowLeft size={16} /> Back to All Posts
       </Link>
 
       <h1 style={{ fontSize: "1.8rem", marginBottom: "0.2rem" }}>

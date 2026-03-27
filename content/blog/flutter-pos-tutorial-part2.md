@@ -4,14 +4,10 @@ date: "Mar 26, 2026"
 description: "Seri Tutorial Flutter Part 2: Platform Awareness dan UI Adaptif"
 ---
 
----
-
 > **Seri Tutorial:** Flutter Fundamental Desain & UI Tingkat Lanjut
 > **Studi Kasus:** Dashboard Aplikasi Mini Point-of-Sale (POS)
 > **Versi Flutter:** 3.41.5
 > **Prerequisite:** Sudah menyelesaikan Part 1 dan memiliki project yang berjalan
-
----
 
 Di Part 1, kita sudah membangun fondasi yang kokoh: halaman kasir dengan arsitektur yang dioptimasi sehingga rebuild widget terisolasi dan tidak menyebar ke mana-mana.
 
