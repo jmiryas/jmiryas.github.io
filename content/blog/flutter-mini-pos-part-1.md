@@ -1,5 +1,5 @@
 ---
-title: "Best Practice Flutter 1: Dari Arsitektur Clean hingga Multithreading di Aplikasi POS"
+title: "Best Practice Flutter Part 1: Dari Arsitektur Clean hingga Multithreading di Aplikasi POS"
 date: "Mar 27, 2026"
 description: "Best Practice Flutter 1: Dari Arsitektur Clean hingga Multithreading di Aplikasi POS"
 ---
